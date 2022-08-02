@@ -6,7 +6,7 @@ import dotenv
 
 
 def generate_random_text(length: int = 15) -> str:
-    return ''.join(random.choice(string.ascii_letters) for i in range(length))
+    return ''.join(random.choice(string.ascii_letters) for _ in range(length))
 
 
 with open("docker-compose.yml", 'r') as ymlfile:
@@ -14,7 +14,7 @@ with open("docker-compose.yml", 'r') as ymlfile:
 
 docker_services = docker_config['services'].keys()
 
-uid_dict = dict()
+uid_dict = {}
 for service in docker_services:
     if service.startswith('connector'):
         new_name = service.replace('-', '_')
